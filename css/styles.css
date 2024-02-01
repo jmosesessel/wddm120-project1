@@ -1,0 +1,127 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+.main-wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100dvh;
+}
+.header-wrap {
+	display: flex;
+	flex-direction: column;
+}
+.content-wrap {
+	display: flex;
+	height: 100%;
+}
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: url('../assets/images/header-bg.jpg') no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-color: #333;
+	color: white;
+	padding: 10px;
+	height: 12rem;
+    box-shadow: 1px 1px 5px #000;
+
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+	background-color: #5578d7;
+	padding: 10px;
+    box-shadow: 1px 1px 5px #000;
+}
+
+nav a {
+	margin: 0 1.5rem;
+	text-decoration: none;
+	color: #333;
+    padding: 0.4rem;
+    border: 1px solid transparent;
+}
+
+nav a:hover {
+    background-color: bisque;
+    padding: 0.4rem;
+	color: #333;
+    border: 1px dashed #eee;
+    border-radius: 0.4rem;
+}
+
+main {
+	display: flex;
+    flex-direction: column;
+    gap: 4rem;
+	padding: 20px;
+}
+
+aside {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+	background-color: #f4f4f4;
+	padding: 10px;
+	width: 20rem;
+    box-shadow: 0px 5px 5px #000;
+}
+
+footer {
+	background-color: #333;
+	color: white;
+	padding: 10px;
+	text-align: center;
+}
+.change-color-scheme{
+    width: 100%;
+    padding: 1rem;
+    
+}
+button {
+	margin-top: 10px;
+	padding: 5px 10px;
+	cursor: pointer;
+    box-shadow: 1px 1px 5px #000;
+}
+hr{
+	margin: 2rem 0;
+	border: 1px dashed #5578d7;
+}
+input{
+	width: 100%;
+	padding: 0.5rem;
+}
+ul li{
+	padding: 0.5rem;
+	border-bottom: 1px solid #9a9797;
+}
+ul li:hover{
+	background-color: grey;
+}
+.buttons-wrap{
+	display: flex;
+	justify-content: space-between;
+}
+.dashboard-list-wrap{
+	display: flex;
+	gap: 2rem;
+}
+.dashboard-box{
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #eee;
+	padding: 1rem;
+	gap: 1rem;
+}
