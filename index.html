@@ -16,7 +16,7 @@
 				</nav>
 
 				<header>
-					<h1>Dynamic Web Page</h1>
+					<h1>WELCOME TO HOST HUB</h1>
 				</header>
 			</section>
 
@@ -25,19 +25,17 @@
 					<section class="aside-top">
 						<h2>In This Section</h2>
 						<ul id="sidebarList">
-							<li data-dashboard="dashboard">Dashboard</li>
-							<li data-about="contact">Contact</li>
-							<li data-blog="blog">Blog</li>
+							<li class="sidebar-list-item" data-page="dashboard">
+								Dashboard
+							</li>
+							<li class="sidebar-list-item" data-page="tags">
+								Manage Tags
+							</li>
+							<li class="sidebar-list-item" data-page="blog">
+								Blog
+							</li>
 						</ul>
 						<hr />
-						<form action="#">
-							<label for="itemName">Enter the item to add to the sidebar</label>
-							<input type="text" name="itemName" id="itemName" />
-						</form>
-						<section class="buttons-wrap">
-							<button onclick="addItem()">Add Item</button>
-							<button onclick="removeItem()">Remove Item</button>
-						</section>
 					</section>
 					<section class="aside-bottom">
 						<button class="change-color-scheme">
@@ -46,27 +44,12 @@
 					</section>
 				</aside>
 				<main>
-					<section id="content1">
-						<h2>Dashboard</h2>
+					<section>
+						<h2 id="page-title">Dashboard</h2>
 					</section>
-					<section id="content2">
-						<section class="dashboard-list-wrap">
-                            <div class="dashboard-box">
-                                <img src="./assets/images/icons8-users-100.png" alt="">
-                                <h3>Users</h3>
-                                <p>Count: 333</p>
-                            </div>
-                            <div class="dashboard-box">
-                                <img src="./assets/images/icons8-statistics-100.png" alt="">
-                                <h3>Revenue</h3>
-                                <p>Count: $877</p>
-                            </div>
-                            <div class="dashboard-box">
-                                <img src="./assets/images/icons8-sales-balance-100.png" alt="">
-                                <h3>Daily Hits</h3>
-                                <p>Count: $877</p>
-                            </div>
-                        </section>
+					<section id="page-content">
+						
+						
 					</section>
 				</main>
 			</section>

@@ -20,6 +20,22 @@ const dashboardContent = {
 	],
 };
 
+const tagContent = {
+	title: "Manage Tags",
+	content: "Enter the Tag Name",
+};
+
+// display the dashboard content with page loads
+document.addEventListener("readystatechange", (event) => {
+	if (event.target.readyState === "complete") {
+		// call the displayTitle and displayDashboard functions
+		const { title } = dashboardContent;
+		const { content } = dashboardContent;
+		displayTitle(title);
+		displayDashboard(content);
+	}
+});
+
 // Content Replacement
 document
 	.getElementById("sidebarList")
@@ -87,28 +103,76 @@ document.querySelector("header").addEventListener("mouseover", () => {
 	alert("Welcome to the Dynamic Web Page!");
 });
 
-document.querySelector('#sidebarList li').addEventListener((event)=>{
-    console.log(event.target)
-})
+// get the list of all the li elements on the sidebar and use it to display the page content
+document.querySelectorAll(".sidebar-list-item").forEach((li) => {
+	li.addEventListener("click", (event) => {
+		console.log("event", event.target.dataset.page);
+		//get selected page
+		const selectedPage = event.target.dataset.page;
+		if (selectedPage === "dashboard") {
+			const { title } = dashboardContent;
+			const { content } = dashboardContent;
+			displayTitle(title);
+			displayDashboard(content);
+		}
+		if (selectedPage === "tags") {
+			const { title } = tagContent;
+			const { content } = tagContent;
+			displayTitle(title);
+			displayTagContent(content);
+		}
+	});
+});
 
+// display page title
+const displayTitle = (title) => {
+	let pageTitle = (document.querySelector("#page-title").innerText = title);
+};
 
-const displayDashboard = ()=>{
-    const {title} = dashboardContent 
-    document.getElementById('content2').innerHTML = `<section class="dashboard-list-wrap">
+// display dashboard content
+const displayDashboard = (content) => {
+	document.getElementById(
+		"page-content"
+	).innerHTML = `<section class="dashboard-list-wrap">
     <div class="dashboard-box">
-        <img src="./assets/images/icons8-users-100.png" alt="">
-        <h3>Users</h3>
-        <p>Count: 333</p>
+        <img src="./assets/images/${content[0].icon}" alt="">
+        <h3>${content[0].name}</h3>
+        <p>${content[0].count}</p>
     </div>
     <div class="dashboard-box">
-        <img src="./assets/images/icons8-statistics-100.png" alt="">
-        <h3>Revenue</h3>
-        <p>Count: $877</p>
+        <img src="./assets/images/${content[1].icon}" alt="">
+        <h3>${content[1].name}</h3>
+        <p>${content[1].count}</p>
     </div>
     <div class="dashboard-box">
-        <img src="./assets/images/icons8-sales-balance-100.png" alt="">
-        <h3>Daily Hits</h3>
-        <p>Count: $877</p>
+        <img src="./assets/images/${content[2].icon}" alt="">
+        <h3>${content[2].name}</h3>
+        <p>${content[2].count}</p>
     </div>
-</section>`
-}
+</section>`;
+};
+
+const displayTagContent = (content) => {
+	document.getElementById(
+		"page-content"
+	).innerHTML = `<section class="contact-form-wrap">
+    <form action="#">
+        <label for="itemName"
+            >${content}</label
+        >
+        <input type="text" name="itemName" id="itemName" />
+    </form>
+    <section class="buttons-wrap">
+        <button onclick="addItem()">Add Item</button>
+        <button onclick="removeItem()">Remove Item</button>
+    </section>
+</section>`;
+};
+
+// const dashboardContentBox = (content) => {
+//     return `<div class="dashboard-box">
+//     <img src="./assets/images/${content.icon}" alt="">
+//     <h3>${content.name}</h3>
+//     <p>${content.count}</p>
+// </div>`
+// }
