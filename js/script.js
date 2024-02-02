@@ -27,30 +27,28 @@ const tagContent = {
 };
 
 const blogPageContent = {
-    title: "Blog",
-    content: [
-	{
-		title: "The Effective Way to Use AI as a Software Developer",
-		image: "ai.jpg",
-		description: `In the rapidly evolving landscape of software development, Artificial Intelligence (AI) has emerged as a transformative force, offering new possibilities and efficiencies for developers. Incorporating AI into your workflow as a software developer can significantly enhance productivity, streamline processes, and open doors to innovative solutions. Here's a guide on the effective ways to leverage AI in your software development journey.
+	title: "Blog",
+	content: [
+		{
+			title: "The Effective Way to Use AI as a Software Developer",
+			image: "ai.jpg",
+			description: `In the rapidly evolving landscape of software development, Artificial Intelligence (AI) has emerged as a transformative force, offering new possibilities and efficiencies for developers. Incorporating AI into your workflow as a software developer can significantly enhance productivity, streamline processes, and open doors to innovative solutions. Here's a guide on the effective ways to leverage AI in your software development journey.
 
         One of the primary applications of AI in software development is automated code generation. Tools powered by machine learning algorithms can analyze patterns in your codebase, understand your coding style, and suggest or generate code snippets. This not only accelerates development but also helps reduce the likelihood of errors, allowing developers to focus on higher-level problem-solving and creative aspects of coding.`,
-		author: "Joseph Moses",
-		date: "22-03-2023",
-	},
-	{
-		title: "Canoe Cruising - The Fun Part",
-		image: "canoe-cruising.jpg",
-		description: `One of the most enticing aspects of canoe cruising is the sheer diversity of environments you can explore. From tranquil lakes surrounded by lush forests to winding rivers that meander through picturesque landscapes, each waterway presents its own set of challenges and rewards. Paddling through these natural wonders allows you to connect with the environment in a way that few other activities can offer.
+			author: "Joseph Moses",
+			date: "22-03-2023",
+		},
+		{
+			title: "Canoe Cruising - The Fun Part",
+			image: "canoe-cruising.jpg",
+			description: `One of the most enticing aspects of canoe cruising is the sheer diversity of environments you can explore. From tranquil lakes surrounded by lush forests to winding rivers that meander through picturesque landscapes, each waterway presents its own set of challenges and rewards. Paddling through these natural wonders allows you to connect with the environment in a way that few other activities can offer.
 
         The rhythmic sound of paddles dipping into the water creates a soothing melody that accompanies canoeists on their journey. As you glide across the water, the sense of peace and tranquility envelops you. The slow pace of canoe cruising allows for a deeper connection with the surroundings – the rustling leaves, the gentle lapping of water against the canoe, and the symphony of birdsong overhead.`,
-		author: "Joseph Moses",
-		date: "22-03-2023",
-	},
-]
-}
-
-;
+			author: "Joseph Moses",
+			date: "22-03-2023",
+		},
+	],
+};
 
 // display the dashboard content with page loads
 document.addEventListener("readystatechange", (event) => {
@@ -99,21 +97,24 @@ function getRandomColor() {
 }
 
 // Element Creation and Deletion
-function addItem() {
+function addTag() {
 	const newItem = document.querySelector("#itemName").value;
 	if (newItem) {
-		const sidebarList = document.getElementById("sidebarList");
-		const li = document.createElement("li");
-		li.textContent = newItem;
-		sidebarList.appendChild(li);
+		const sidebarList = document.querySelector(".tag-list");
+		const span = document.createElement("span");
+		span.classList.add("tag-box");
+		span.textContent = newItem;
+		sidebarList.appendChild(span);
+		//clear input box after adding
+		document.querySelector("#itemName").value = "";
 	}
 }
 // remove the items from the sidebar
-function removeItem() {
+function removeTag() {
 	const selectedItem = prompt("Enter the item to remove:");
 	if (selectedItem) {
-		const sidebarList = document.getElementById("sidebarList");
-		const items = sidebarList.getElementsByTagName("li");
+		const sidebarList = document.querySelector(".tag-list");
+		const items = sidebarList.getElementsByTagName("span");
 		for (let i = 0; i < items.length; i++) {
 			if (items[i].textContent === selectedItem) {
 				sidebarList.removeChild(items[i]);
@@ -123,10 +124,8 @@ function removeItem() {
 	}
 }
 
-//
-
 // Event Handling
-document.querySelector("header").addEventListener("mouseover", () => {
+document.querySelector("nav").addEventListener("mouseover", () => {
 	alert("Welcome to the Dynamic Web Page!");
 });
 
@@ -189,16 +188,19 @@ const displayTagContent = (content) => {
 	document.getElementById(
 		"page-content"
 	).innerHTML = `<section class="contact-form-wrap">
-    <form action="#">
+    <form class="tag-form" action="#">
         <label for="itemName"
             >${content}</label
         >
-        <input type="text" name="itemName" id="itemName" />
+        <input type="text" name="itemName" id="itemName" required />
+        
+        
     </form>
     <section class="buttons-wrap">
-        <button onclick="addItem()">Add Item</button>
-        <button onclick="removeItem()">Remove Item</button>
+    <button onclick="addTag()">Add Tag</button>
+        <button onclick="removeTag()">Remove Tag</button>
     </section>
+    
 </section>`;
 };
 
@@ -209,7 +211,7 @@ const displayBlogContent = (content) => {
 	const blogContainer = document.querySelector(".blog-container");
 	console.log("blogContainer", blogContainer);
 	let allBlogContent = "";
-	blogPageContent['content'].forEach((blog) => {
+	blogPageContent["content"].forEach((blog) => {
 		console.log("this blog", blog);
 		allBlogContent += dashboardContentBox(blog);
 	});

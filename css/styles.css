@@ -91,7 +91,9 @@ footer {
 .change-color-scheme{
     width: 100%;
     padding: 1rem;
-    
+    background-color: #5578d7;
+	font-size: 1rem;
+	color: white;
 }
 button {
 	margin-top: 10px;
@@ -127,12 +129,18 @@ ul li:hover{
 	display: flex;
 	gap: 2rem;
 }
-.dashboard-box{
-	display: flex;
-	flex-direction: column;
-	border: 1px solid #eee;
-	padding: 1rem;
-	gap: 1rem;
+.dashboard-box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+    padding: 4rem;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard-box h3{
+	font-size: 1.8rem;
+	color: #888;
 }
 .blog-page-wrap{
 	display: flex;
@@ -155,4 +163,25 @@ ul li:hover{
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+}
+.tag-form{
+	max-width: 30rem;
+}
+.contact-form-wrap{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 30rem;
+	
+}
+.tag-list{
+	display: flex;
+	gap: 1rem;
+}
+.tag-box{
+	padding: 0.2rem;
+	background-color: #5578d7;
+	color: white;
+	font-size: 0.7rem;
+	border-radius: 678909876789px;
 }
