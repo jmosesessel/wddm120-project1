@@ -20,10 +20,37 @@ const dashboardContent = {
 	],
 };
 
+//Tags page content
 const tagContent = {
 	title: "Manage Tags",
 	content: "Enter the Tag Name",
 };
+
+const blogPageContent = {
+    title: "Blog",
+    content: [
+	{
+		title: "The Effective Way to Use AI as a Software Developer",
+		image: "ai.jpg",
+		description: `In the rapidly evolving landscape of software development, Artificial Intelligence (AI) has emerged as a transformative force, offering new possibilities and efficiencies for developers. Incorporating AI into your workflow as a software developer can significantly enhance productivity, streamline processes, and open doors to innovative solutions. Here's a guide on the effective ways to leverage AI in your software development journey.
+
+        One of the primary applications of AI in software development is automated code generation. Tools powered by machine learning algorithms can analyze patterns in your codebase, understand your coding style, and suggest or generate code snippets. This not only accelerates development but also helps reduce the likelihood of errors, allowing developers to focus on higher-level problem-solving and creative aspects of coding.`,
+		author: "Joseph Moses",
+		date: "22-03-2023",
+	},
+	{
+		title: "Canoe Cruising - The Fun Part",
+		image: "canoe-cruising.jpg",
+		description: `One of the most enticing aspects of canoe cruising is the sheer diversity of environments you can explore. From tranquil lakes surrounded by lush forests to winding rivers that meander through picturesque landscapes, each waterway presents its own set of challenges and rewards. Paddling through these natural wonders allows you to connect with the environment in a way that few other activities can offer.
+
+        The rhythmic sound of paddles dipping into the water creates a soothing melody that accompanies canoeists on their journey. As you glide across the water, the sense of peace and tranquility envelops you. The slow pace of canoe cruising allows for a deeper connection with the surroundings – the rustling leaves, the gentle lapping of water against the canoe, and the symphony of birdsong overhead.`,
+		author: "Joseph Moses",
+		date: "22-03-2023",
+	},
+]
+}
+
+;
 
 // display the dashboard content with page loads
 document.addEventListener("readystatechange", (event) => {
@@ -121,6 +148,12 @@ document.querySelectorAll(".sidebar-list-item").forEach((li) => {
 			displayTitle(title);
 			displayTagContent(content);
 		}
+		if (selectedPage == "blog") {
+			const { title } = blogPageContent;
+			const { content } = blogPageContent;
+			displayTitle(title);
+			displayBlogContent(content);
+		}
 	});
 });
 
@@ -169,10 +202,36 @@ const displayTagContent = (content) => {
 </section>`;
 };
 
-// const dashboardContentBox = (content) => {
-//     return `<div class="dashboard-box">
-//     <img src="./assets/images/${content.icon}" alt="">
-//     <h3>${content.name}</h3>
-//     <p>${content.count}</p>
-// </div>`
-// }
+const displayBlogContent = (content) => {
+	let mainBox = document.getElementById("page-content");
+	let blogPageWrap = document.createElement("section");
+	blogPageWrap.classList.add("blog-page-wrap");
+	const blogContainer = document.querySelector(".blog-container");
+	console.log("blogContainer", blogContainer);
+	let allBlogContent = "";
+	blogPageContent['content'].forEach((blog) => {
+		console.log("this blog", blog);
+		allBlogContent += dashboardContentBox(blog);
+	});
+	blogPageWrap.innerHTML = "";
+	// console.log("allBlogContent", allBlogContent);
+	blogPageWrap.innerHTML = allBlogContent;
+	// Remove all children
+	while (mainBox.firstChild) {
+		mainBox.removeChild(mainBox.firstChild);
+	}
+
+	mainBox.appendChild(blogPageWrap);
+};
+
+const dashboardContentBox = (blog) => {
+	return `<section class="blog-container">
+    <img class="blog-image" src="assets/images/${blog.image}" alt="">
+    <div class="blog-content-wrap">
+        <h2 class="blog-title">${blog.title}</h2>
+        <p class="blog-description">${blog.description} </p>
+        <h5>Author: ${blog.author}</h5>
+        <h5 class="blog-date">Published: ${blog.date}</h>
+    </div>
+</section>`;
+};

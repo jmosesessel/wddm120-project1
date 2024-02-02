@@ -2,6 +2,7 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	text-shadow: 1px 1px 1px 1px #ddd;
 }
 body {
 	font-family: Arial, sans-serif;
@@ -68,6 +69,7 @@ main {
     flex-direction: column;
     gap: 4rem;
 	padding: 20px;
+	width: 80dvw;
 }
 
 aside {
@@ -76,7 +78,7 @@ aside {
     justify-content: space-between;
 	background-color: #f4f4f4;
 	padding: 10px;
-	width: 20rem;
+	width: 20dvw;
     box-shadow: 0px 5px 5px #000;
 }
 
@@ -113,6 +115,10 @@ ul li{
 ul li:hover{
 	background-color: grey;
 }
+#page-title{
+	font-size: 2rem;
+	text-decoration: underline;
+}
 .buttons-wrap{
 	display: flex;
 	justify-content: space-between;
@@ -127,4 +133,26 @@ ul li:hover{
 	border: 1px solid #eee;
 	padding: 1rem;
 	gap: 1rem;
+}
+.blog-page-wrap{
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.blog-container{
+	display: flex;
+	padding: 1rem;
+	gap: 2rem;
+	border: 1px dashed #333;
+	border-radius: 1rem;
+	background-color: white;
+	box-shadow: 1px 1px 5px #000;
+}
+.blog-image{
+	width: 20rem;
+}
+.blog-content-wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }
